@@ -2,12 +2,15 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm'
 
 import { v4 as uuid } from 'uuid'
+import { Modulos } from './Modulos'
+import { Users } from './Users'
 
 @Entity('aulas')
 export class Aulas {
@@ -20,17 +23,12 @@ export class Aulas {
   @Column('timestamp with time zone')
   date: Date
 
-  @ManyToOne(() => Modulos, {
+  @ManyToOne(() => Modulos, modulos => modulos.aulas, {
     onDelete: 'SET NULL',
     onUpdate: 'CASCADE',
   })
-  @JoinColumn({ name: 'user_id' })
-  user: User(() => User, {
-    onDelete: 'SET NULL',
-    onUpdate: 'CASCADE',
-  })
-  @JoinColumn({ name: 'user_id' })
-  user: User
+  @JoinColumn()
+  modulos: Modulos
 
   @CreateDateColumn()
   created_at: Date
