@@ -1,5 +1,5 @@
 import { AppDataSource } from '../database/data-source'
-import { Users } from '../entities/Users'
+import { User } from '../entities/User'
 import { jwt } from '../config/auth'
 import { sign } from 'jsonwebtoken'
 import AppError from '../errors/AppError'
@@ -11,11 +11,11 @@ interface IRequest {
 }
 
 interface IResponse {
-  user: Users
+  user: User
   token: string
 }
 
-const repository = AppDataSource.getRepository(Users)
+const repository = AppDataSource.getRepository(User)
 
 export class AuthenticateUserService {
   public async execute({ email, password }: IRequest): Promise<IResponse> {
@@ -33,7 +33,7 @@ export class AuthenticateUserService {
 
     const { secret, expiresIn } = jwt
 
-    const token = sign({}, `${process.env.JWT_PASS}`, {
+    const token = sign({}, secret, {
       subject: user.id,
       expiresIn,
     })

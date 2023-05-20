@@ -1,10 +1,10 @@
 //transportar para dentro do repostiory
 import { AppDataSource } from '../database/data-source'
-import { Users } from '../entities/Users'
+import { User } from '../entities/User'
 import { hash } from 'bcryptjs'
 import AppError from '../errors/AppError'
 
-const repository = AppDataSource.getRepository(Users)
+const repository = AppDataSource.getRepository(User)
 //apagar
 
 interface ICreateUserRequest {
@@ -18,7 +18,7 @@ export class CreateUserService {
     name,
     email,
     password,
-  }: ICreateUserRequest): Promise<Users> {
+  }: ICreateUserRequest): Promise<User> {
     const userExists = await repository.findOneBy({ email })
 
     if (userExists) {
