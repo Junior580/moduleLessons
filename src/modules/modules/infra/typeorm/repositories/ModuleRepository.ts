@@ -40,6 +40,10 @@ export class ModuleRepository implements IModuleRepository {
     return module
   }
 
+  public async save(module: Module) {
+    await this.moduleRepository.save(module)
+  }
+
   public async delete(id: string): Promise<void> {
     await this.moduleRepository.delete(id)
   }

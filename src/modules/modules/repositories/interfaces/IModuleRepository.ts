@@ -6,5 +6,6 @@ export interface IModuleRepository {
   findByName(name: string): Promise<Module | null>
   createModule({ name, userID }: ICreateModuleDTO): Promise<Module>
   findById(id: string): Promise<Module | null>
+  save({ name, userID }: ICreateModuleDTO): Promise<void>
   delete(id: string): Promise<void>
 }

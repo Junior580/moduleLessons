@@ -12,6 +12,6 @@ const getLesson = new GetLessonController()
 const deleteLesson = new DeleteLessonController()
 
 lessonRoutes.post('/', ensureAuthenticated, createLesson.handle)
-lessonRoutes.get('/', ensureAuthenticated, getLesson.handle)
+lessonRoutes.get('/', getLesson.handle)
 
-lessonRoutes.delete('/:id', ensureAuthenticated, deleteLesson.handle)
+lessonRoutes.delete('/:id', deleteLesson.handle)
