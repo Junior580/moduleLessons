@@ -11,5 +11,6 @@ export interface ILessonRepository {
   findLessonByName(name: string): Promise<Lesson | null>
   createLesson({ name, userID }: ICreateLessonDTO): Promise<Lesson>
   findById(id: string): Promise<Lesson | null>
+  save(lesson: Lesson): Promise<void>
   delete(id: string): Promise<void>
 }

@@ -14,7 +14,7 @@ export class UpdateModuleService {
     const module = await this.moduleRepository.findById(id)
 
     if (!module) {
-      throw new AppError('User does not exists!', 401)
+      throw new AppError('Module does not exists!', 401)
     }
 
     module.name = name ? name : module.name

@@ -61,6 +61,10 @@ export class LessonRepository implements ILessonRepository {
     return lesson
   }
 
+  public async save(lesson: Lesson): Promise<void> {
+    await this.lessonRepository.save(lesson)
+  }
+
   public async delete(id: string): Promise<void> {
     await this.lessonRepository.delete(id)
   }
