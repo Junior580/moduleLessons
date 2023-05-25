@@ -55,6 +55,16 @@ export class LessonRepository implements ILessonRepository {
     return lesson
   }
 
+  public async findByModuleId(id: string): Promise<Lesson[] | null> {
+    const lesson = await this.lessonRepository.find({
+      where: {
+        moduleID: id,
+      },
+    })
+
+    return lesson
+  }
+
   public async findById(id: string): Promise<Lesson | null> {
     const lesson = await this.lessonRepository.findOneBy({ id })
 

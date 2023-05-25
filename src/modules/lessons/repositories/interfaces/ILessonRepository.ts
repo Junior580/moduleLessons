@@ -10,6 +10,7 @@ export interface ILessonRepository {
   }: IFindLessonByDateAndModuleDTO): Promise<Lesson | null>
   findLessonByName(name: string): Promise<Lesson | null>
   createLesson({ name, userID }: ICreateLessonDTO): Promise<Lesson>
+  findByModuleId(id: string): Promise<Lesson[] | null>
   findById(id: string): Promise<Lesson | null>
   save(lesson: Lesson): Promise<void>
   delete(id: string): Promise<void>
