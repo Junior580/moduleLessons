@@ -3,9 +3,12 @@
 -Banco de dados:
 PostgreSQL
 
-## Getting Started
+## Começando
 
-Primeiro rodar as migrations:
+-Crie o arquivo .env como no .env.example
+e preencha as informações
+
+Criar e rodar as migrations:
 
 ```bash
 yarn migration:generate
@@ -16,7 +19,7 @@ yarn migration:run
 
 ```
 
-Depois executar o servidor:
+-Depois executar o servidor:
 
 ```bash
 npm run dev
